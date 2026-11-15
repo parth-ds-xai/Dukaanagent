@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/dify/(.*)",
+      "destination": "https://api.dify.ai/v1/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
