@@ -7,27 +7,44 @@ export default function Footer() {
         <div className="footer-grid">
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-              <Sunburst size={28} />
-              <span
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontWeight: 500,
-                  fontSize: 18,
-                  color: 'var(--cream)',
-                }}
-              >
-                DukaanAgent
-              </span>
+              <Sunburst size={30} />
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    fontWeight: 600,
+                    fontSize: 20,
+                    color: 'var(--text-primary)',
+                  }}
+                >
+                  DukaanAgent
+                </span>
+                <span
+                  style={{
+                    fontSize: 10,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.08em',
+                    fontWeight: 700,
+                    color: 'var(--emerald)',
+                    background: 'var(--emerald-light)',
+                    padding: '2px 6px',
+                    borderRadius: 4,
+                    border: '1px solid var(--emerald-border)',
+                  }}
+                >
+                  Artisan AI
+                </span>
+              </div>
             </div>
             <p className="footer-brand-desc">
               Built for every artisan, everywhere — Thoughtful AI for India’s handmade economy.
               Your craft stays at the centre. Our agents quietly handle the market intelligence around it.
             </p>
-            <div style={{ marginTop: 20, fontSize: 13, color: 'var(--cream-dim)' }}>
+            <div style={{ marginTop: 20, fontSize: 13, color: 'var(--text-muted)' }}>
               Contact:{' '}
               <a
                 href="mailto:hello@dukaanagent.in"
-                style={{ color: 'var(--orange)', textDecoration: 'none' }}
+                style={{ color: 'var(--emerald)', textDecoration: 'none', fontWeight: 600 }}
               >
                 hello@dukaanagent.in
               </a>
@@ -59,7 +76,7 @@ export default function Footer() {
 
           <div>
             <div className="footer-col-title">Commitment</div>
-            <p style={{ fontSize: 12, color: 'var(--cream-dim)', lineHeight: 1.7, fontWeight: 300 }}>
+            <p style={{ fontSize: 12.5, color: 'var(--text-muted)', lineHeight: 1.7, fontWeight: 400 }}>
               DukaanAgent is dedicated to safeguarding fair artisan compensation, preserving endangered Indian craft techniques, and democratizing direct-to-consumer digital commerce.
             </p>
           </div>

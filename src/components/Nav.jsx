@@ -7,9 +7,20 @@ export default function Nav({ onTryClick, lang, onLangChange, savedCount, onOpen
   return (
     <nav className="nav">
       <div className="nav-inner">
-        <a href="#" className="nav-logo" onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-          <Sunburst size={28} className="sunburst-sm" />
-          <span>DukaanAgent</span>
+        <a
+          href="#"
+          className="nav-logo"
+          onClick={e => {
+            e.preventDefault()
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+          }}
+          aria-label="DukaanAgent Home"
+        >
+          <Sunburst size={30} className="sunburst-sm" />
+          <div className="nav-logo-text">
+            <span>DukaanAgent</span>
+            <span className="nav-logo-badge">Artisan AI</span>
+          </div>
         </a>
 
         <ul className="nav-links">
@@ -24,53 +35,34 @@ export default function Nav({ onTryClick, lang, onLangChange, savedCount, onOpen
             <li>
               <button
                 type="button"
+                className="nav-saved-btn"
                 onClick={onOpenSaved}
-                style={{
-                  background: 'rgba(232, 131, 56, 0.12)',
-                  border: '1px solid rgba(232, 131, 56, 0.3)',
-                  color: 'var(--orange)',
-                  fontSize: 12,
-                  padding: '5px 12px',
-                  borderRadius: 100,
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 6,
-                  fontWeight: 500,
-                }}
               >
                 <span>📦</span>
-                <span>{t.savedListings} ({savedCount})</span>
+                <span>{t.savedListings}</span>
+                <span className="nav-saved-count">{savedCount}</span>
               </button>
             </li>
           )}
 
           {/* Language Switcher */}
-          <li style={{ display: 'flex', alignItems: 'center', background: 'rgba(230, 218, 201, 0.06)', borderRadius: 100, padding: 2, border: '1px solid var(--border)' }}>
-            {[
-              { code: 'en', label: 'EN' },
-              { code: 'hi', label: 'हिं' },
-              { code: 'gu', label: 'ગુજ' },
-            ].map(item => (
-              <button
-                key={item.code}
-                type="button"
-                onClick={() => onLangChange(item.code)}
-                style={{
-                  background: lang === item.code ? 'var(--orange)' : 'transparent',
-                  color: lang === item.code ? '#0C0A09' : 'var(--cream-dim)',
-                  border: 'none',
-                  padding: '3px 8px',
-                  borderRadius: 100,
-                  fontSize: 11,
-                  fontWeight: lang === item.code ? 600 : 400,
-                  cursor: 'pointer',
-                  transition: 'all 0.2s',
-                }}
-              >
-                {item.label}
-              </button>
-            ))}
+          <li>
+            <div className="nav-lang-picker">
+              {[
+                { code: 'en', label: 'EN' },
+                { code: 'hi', label: 'हिं' },
+                { code: 'gu', label: 'ગુજ' },
+              ].map(item => (
+                <button
+                  key={item.code}
+                  type="button"
+                  onClick={() => onLangChange(item.code)}
+                  className={`nav-lang-btn ${lang === item.code ? 'active' : ''}`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
           </li>
 
           <li>
@@ -82,7 +74,7 @@ export default function Nav({ onTryClick, lang, onLangChange, savedCount, onOpen
                 onTryClick()
               }}
             >
-              {t.tryBtn}
+              <span>✦</span> {t.tryBtn}
             </a>
           </li>
         </ul>

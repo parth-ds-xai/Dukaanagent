@@ -120,11 +120,11 @@ Platform Recommendation: ${data.platform}`
         </div>
 
         <div className="final-listing-card">
-          {/* Header preview with craft photo or textile pattern */}
+          {/* Header preview with craft photo or textile banner */}
           <div
             style={{
               height: 140,
-              background: 'linear-gradient(135deg, #1C130D, #2D1A10)',
+              background: 'linear-gradient(135deg, #046A38 0%, #034D28 55%, #E34222 100%)',
               position: 'relative',
               overflow: 'hidden',
               display: 'flex',
@@ -144,21 +144,21 @@ Platform Recommendation: ${data.platform}`
                   width: '100%',
                   height: '100%',
                   objectFit: 'cover',
-                  opacity: 0.45,
-                  filter: 'brightness(0.7) contrast(1.1)',
+                  opacity: 0.35,
+                  filter: 'contrast(1.15)',
                 }}
               />
             ) : (
-              <div className="textile-pattern" style={{ opacity: 0.35 }} />
+              <div className="textile-pattern" style={{ opacity: 0.25 }} />
             )}
 
-            <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', gap: 12 }}>
-              <Sunburst size={40} />
+            <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', gap: 14 }}>
+              <Sunburst size={44} />
               <div>
-                <div style={{ fontSize: 11, color: 'var(--orange)', letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 600 }}>
-                  Craft Certified
+                <div style={{ fontSize: 11, color: '#F9EBD7', letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 700 }}>
+                  Craft Certified · YC Commerce
                 </div>
-                <div style={{ fontSize: 16, color: 'var(--cream)', fontWeight: 500 }}>
+                <div style={{ fontSize: 17, color: '#FFFFFF', fontWeight: 600, fontFamily: 'var(--font-display)' }}>
                   Authentic Handcrafted Artisan Edition
                 </div>
               </div>
@@ -168,16 +168,18 @@ Platform Recommendation: ${data.platform}`
               style={{
                 position: 'relative',
                 zIndex: 1,
-                background: 'rgba(12, 10, 9, 0.75)',
+                background: 'rgba(255, 255, 255, 0.95)',
                 backdropFilter: 'blur(8px)',
-                border: '1px solid var(--border-strong)',
-                color: 'var(--cream)',
+                border: '1px solid rgba(255, 255, 255, 0.6)',
+                color: 'var(--text-primary)',
                 fontSize: 12,
-                padding: '6px 14px',
+                fontWeight: 600,
+                padding: '7px 16px',
                 borderRadius: 100,
                 display: 'flex',
                 alignItems: 'center',
                 gap: 6,
+                boxShadow: 'var(--shadow-sm)',
               }}
             >
               <span>📍</span> Handmade in {data.home_city}
@@ -186,17 +188,17 @@ Platform Recommendation: ${data.platform}`
 
           <div className="listing-card-header">
             <div>
-              <div style={{ fontSize: 11, color: 'var(--cream-dim)', marginBottom: 4 }}>
-                Home & Living · Table Linen & Handloom
+              <div style={{ fontSize: 11.5, color: 'var(--text-muted)', marginBottom: 4, fontWeight: 500 }}>
+                Home & Living · Table Linen & Heritage Handloom
               </div>
               <div className="listing-card-name">{data.title}</div>
             </div>
 
             <div
               style={{
-                background: 'rgba(58, 124, 90, 0.1)',
-                border: '1px solid rgba(58, 124, 90, 0.25)',
-                color: '#3A7C5A',
+                background: 'var(--emerald-light)',
+                border: '1px solid var(--emerald-border)',
+                color: 'var(--emerald)',
                 fontSize: 12,
                 fontWeight: 600,
                 padding: '6px 14px',
@@ -217,15 +219,15 @@ Platform Recommendation: ${data.platform}`
               </div>
 
               <div style={{ textAlign: 'right' }}>
-                <div style={{ fontSize: 11, color: 'var(--cream-dim)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                <div style={{ fontSize: 11, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600 }}>
                   Target Marketplace
                 </div>
                 <div
                   style={{
                     fontFamily: 'var(--font-display)',
-                    fontSize: 20,
-                    color: 'var(--cream)',
-                    fontWeight: 500,
+                    fontSize: 22,
+                    color: 'var(--text-primary)',
+                    fontWeight: 600,
                   }}
                 >
                   {data.platform}
@@ -234,7 +236,7 @@ Platform Recommendation: ${data.platform}`
             </div>
 
             <div className="listing-desc-block">
-              <strong style={{ color: 'var(--cream)', fontSize: 14 }}>{data.title}</strong>
+              <strong style={{ color: 'var(--text-primary)', fontSize: 14 }}>{data.title}</strong>
               {'\n\n'}
               {data.listing_description}
             </div>
@@ -255,16 +257,16 @@ Platform Recommendation: ${data.platform}`
                 <div
                   key={label}
                   style={{
-                    background: 'rgba(0,0,0,0.25)',
+                    background: 'var(--bg-card-subtle)',
                     borderRadius: 12,
-                    padding: '12px 14px',
+                    padding: '14px 16px',
                     border: '1px solid var(--border)',
                   }}
                 >
-                  <div style={{ fontSize: 10, color: 'var(--cream-dim)', marginBottom: 4, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                  <div style={{ fontSize: 10, color: 'var(--text-muted)', marginBottom: 4, textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600 }}>
                     {label}
                   </div>
-                  <div style={{ fontSize: 12, fontWeight: 500, color: 'var(--cream-soft)' }}>
+                  <div style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--text-primary)' }}>
                     {val}
                   </div>
                 </div>
@@ -286,17 +288,18 @@ Platform Recommendation: ${data.platform}`
                 type="button"
                 onClick={() => setShowPublishModal(true)}
                 style={{
-                  background: 'rgba(232, 131, 56, 0.15)',
-                  border: '1px solid rgba(232, 131, 56, 0.35)',
-                  color: 'var(--orange)',
-                  padding: '13px 20px',
+                  background: 'var(--emerald-light)',
+                  border: '1px solid var(--emerald-border)',
+                  color: 'var(--emerald)',
+                  padding: '13px 22px',
                   borderRadius: 100,
                   fontSize: 13,
-                  fontWeight: 500,
+                  fontWeight: 600,
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   gap: 6,
+                  transition: 'all 0.2s ease',
                 }}
               >
                 {t.publishBtn}
@@ -306,16 +309,19 @@ Platform Recommendation: ${data.platform}`
                 type="button"
                 onClick={() => setShowOndcModal(true)}
                 style={{
-                  background: 'rgba(230, 218, 201, 0.05)',
+                  background: '#FFFFFF',
                   border: '1px solid var(--border)',
-                  color: 'var(--cream-soft)',
-                  padding: '13px 18px',
+                  color: 'var(--text-secondary)',
+                  padding: '13px 20px',
                   borderRadius: 100,
                   fontSize: 13,
+                  fontWeight: 500,
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   gap: 6,
+                  transition: 'all 0.2s ease',
+                  boxShadow: 'var(--shadow-sm)',
                 }}
               >
                 {t.exportOndcBtn}
@@ -331,13 +337,14 @@ Platform Recommendation: ${data.platform}`
                   borderRadius: 100,
                   background: 'rgba(37, 211, 102, 0.12)',
                   border: '1px solid rgba(37, 211, 102, 0.3)',
-                  color: '#25D366',
+                  color: '#075E54',
                   fontSize: 16,
+                  fontWeight: 700,
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  transition: 'all 0.2s',
+                  transition: 'all 0.2s ease',
                 }}
               >
                 W
@@ -351,15 +358,16 @@ Platform Recommendation: ${data.platform}`
                   width: 48,
                   height: 48,
                   borderRadius: 100,
-                  background: 'rgba(230, 218, 201, 0.05)',
+                  background: '#FFFFFF',
                   border: '1px solid var(--border)',
-                  color: 'var(--cream-soft)',
+                  color: 'var(--text-secondary)',
                   fontSize: 16,
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  transition: 'all 0.2s',
+                  transition: 'all 0.2s ease',
+                  boxShadow: 'var(--shadow-sm)',
                 }}
               >
                 {copiedShare ? '✓' : '↗'}
@@ -374,7 +382,7 @@ Platform Recommendation: ${data.platform}`
             style={{
               position: 'fixed',
               inset: 0,
-              background: 'rgba(0,0,0,0.85)',
+              background: 'rgba(28, 25, 23, 0.65)',
               backdropFilter: 'blur(8px)',
               zIndex: 999,
               display: 'flex',
@@ -385,8 +393,8 @@ Platform Recommendation: ${data.platform}`
           >
             <div
               style={{
-                background: 'var(--paper)',
-                border: '1px solid var(--border-strong)',
+                background: '#FFFFFF',
+                border: '1px solid var(--border)',
                 borderRadius: 20,
                 maxWidth: 640,
                 width: '100%',
@@ -394,22 +402,22 @@ Platform Recommendation: ${data.platform}`
                 display: 'flex',
                 flexDirection: 'column',
                 overflow: 'hidden',
-                boxShadow: '0 24px 64px rgba(0,0,0,0.8)',
+                boxShadow: '0 24px 64px rgba(40, 30, 20, 0.2)',
               }}
             >
               <div style={{ padding: '20px 24px', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div>
-                  <div style={{ fontSize: 16, fontWeight: 600, color: 'var(--cream)' }}>
+                  <div style={{ fontSize: 16, fontWeight: 600, color: 'var(--text-primary)' }}>
                     ONDC Beckn Retail Catalog Schema
                   </div>
-                  <div style={{ fontSize: 12, color: 'var(--cream-dim)' }}>
+                  <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>
                     Standard protocol payload for Open Network for Digital Commerce
                   </div>
                 </div>
                 <button
                   type="button"
                   onClick={() => setShowOndcModal(false)}
-                  style={{ background: 'none', border: 'none', color: 'var(--cream-dim)', fontSize: 20, cursor: 'pointer' }}
+                  style={{ background: 'none', border: 'none', color: 'var(--text-muted)', fontSize: 20, cursor: 'pointer' }}
                 >
                   ✕
                 </button>
@@ -418,11 +426,12 @@ Platform Recommendation: ${data.platform}`
               <div style={{ padding: 20, overflowY: 'auto', flex: 1 }}>
                 <pre
                   style={{
-                    background: 'rgba(0,0,0,0.5)',
+                    background: 'var(--bg-card-subtle)',
+                    border: '1px solid var(--border)',
                     padding: 16,
                     borderRadius: 12,
                     fontSize: 12,
-                    color: '#C28E3A',
+                    color: 'var(--emerald)',
                     overflowX: 'auto',
                     fontFamily: 'monospace',
                   }}
@@ -439,13 +448,14 @@ Platform Recommendation: ${data.platform}`
                     alert('ONDC JSON copied to clipboard!')
                   }}
                   style={{
-                    background: 'rgba(230, 218, 201, 0.08)',
+                    background: '#FFFFFF',
                     border: '1px solid var(--border)',
-                    color: 'var(--cream)',
+                    color: 'var(--text-primary)',
                     padding: '8px 16px',
                     borderRadius: 8,
                     cursor: 'pointer',
                     fontSize: 13,
+                    fontWeight: 500,
                   }}
                 >
                   Copy JSON
@@ -454,14 +464,14 @@ Platform Recommendation: ${data.platform}`
                   type="button"
                   onClick={handleDownloadOndc}
                   style={{
-                    background: 'var(--grad-brand)',
+                    background: 'var(--grad-emerald)',
                     border: 'none',
-                    color: 'var(--cream)',
+                    color: '#FFFFFF',
                     padding: '8px 18px',
                     borderRadius: 8,
                     cursor: 'pointer',
                     fontSize: 13,
-                    fontWeight: 500,
+                    fontWeight: 600,
                   }}
                 >
                   Download .json
@@ -477,7 +487,7 @@ Platform Recommendation: ${data.platform}`
             style={{
               position: 'fixed',
               inset: 0,
-              background: 'rgba(0,0,0,0.85)',
+              background: 'rgba(28, 25, 23, 0.65)',
               backdropFilter: 'blur(8px)',
               zIndex: 999,
               display: 'flex',
@@ -488,29 +498,29 @@ Platform Recommendation: ${data.platform}`
           >
             <div
               style={{
-                background: 'var(--paper)',
-                border: '1px solid var(--border-strong)',
+                background: '#FFFFFF',
+                border: '1px solid var(--border)',
                 borderRadius: 20,
                 maxWidth: 520,
                 width: '100%',
                 overflow: 'hidden',
                 padding: 28,
-                boxShadow: '0 24px 64px rgba(0,0,0,0.8)',
+                boxShadow: '0 24px 64px rgba(40, 30, 20, 0.2)',
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 20 }}>
                 <div>
-                  <div style={{ fontSize: 18, fontWeight: 600, color: 'var(--cream)', fontFamily: 'var(--font-display)' }}>
+                  <div style={{ fontSize: 19, fontWeight: 600, color: 'var(--text-primary)', fontFamily: 'var(--font-display)' }}>
                     Direct Marketplace Publish
                   </div>
-                  <div style={{ fontSize: 12, color: 'var(--cream-dim)' }}>
+                  <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>
                     Target channel: {data.platform} (Amazon Karigar Partner API)
                   </div>
                 </div>
                 <button
                   type="button"
                   onClick={() => { setShowPublishModal(false); setPublishStatus('idle'); }}
-                  style={{ background: 'none', border: 'none', color: 'var(--cream-dim)', fontSize: 20, cursor: 'pointer' }}
+                  style={{ background: 'none', border: 'none', color: 'var(--text-muted)', fontSize: 20, cursor: 'pointer' }}
                 >
                   ✕
                 </button>
@@ -518,22 +528,22 @@ Platform Recommendation: ${data.platform}`
 
               {publishStatus === 'idle' && (
                 <div>
-                  <p style={{ fontSize: 13, color: 'var(--cream-dim)', lineHeight: 1.6, marginBottom: 20 }}>
+                  <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: 20 }}>
                     Publishing will push your verified craft listing directly to {data.platform} with the following parameters:
                   </p>
 
-                  <div style={{ background: 'rgba(0,0,0,0.3)', borderRadius: 12, padding: 16, marginBottom: 24, fontSize: 12 }}>
+                  <div style={{ background: 'var(--bg-card-subtle)', border: '1px solid var(--border)', borderRadius: 12, padding: 16, marginBottom: 24, fontSize: 12 }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
-                      <span style={{ color: 'var(--cream-dim)' }}>SKU Identifier:</span>
-                      <span style={{ color: 'var(--cream)', fontFamily: 'monospace' }}>DKA-{Date.now().toString().slice(-6)}</span>
+                      <span style={{ color: 'var(--text-muted)' }}>SKU Identifier:</span>
+                      <span style={{ color: 'var(--text-primary)', fontFamily: 'monospace', fontWeight: 600 }}>DKA-{Date.now().toString().slice(-6)}</span>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
-                      <span style={{ color: 'var(--cream-dim)' }}>Channel Price:</span>
-                      <span style={{ color: 'var(--orange)', fontWeight: 600 }}>{data.recommended_price}</span>
+                      <span style={{ color: 'var(--text-muted)' }}>Channel Price:</span>
+                      <span style={{ color: 'var(--emerald)', fontWeight: 700 }}>{data.recommended_price}</span>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                      <span style={{ color: 'var(--cream-dim)' }}>Commission Bracket:</span>
-                      <span style={{ color: '#3A7C5A' }}>5% GI Artisan Rate</span>
+                      <span style={{ color: 'var(--text-muted)' }}>Commission Bracket:</span>
+                      <span style={{ color: 'var(--emerald)', fontWeight: 600 }}>5% GI Artisan Rate</span>
                     </div>
                   </div>
 
@@ -542,14 +552,15 @@ Platform Recommendation: ${data.platform}`
                     onClick={handleSimulatePublish}
                     style={{
                       width: '100%',
-                      background: 'var(--grad-brand)',
+                      background: 'var(--grad-emerald)',
                       border: 'none',
-                      color: 'var(--cream)',
+                      color: '#FFFFFF',
                       padding: 14,
                       borderRadius: 100,
                       fontWeight: 600,
                       cursor: 'pointer',
                       fontSize: 14,
+                      boxShadow: 'var(--shadow-md)',
                     }}
                   >
                     Confirm & Publish Listing
@@ -559,11 +570,11 @@ Platform Recommendation: ${data.platform}`
 
               {publishStatus === 'publishing' && (
                 <div style={{ textAlign: 'center', padding: '32px 0' }}>
-                  <div className="spinner" style={{ width: 36, height: 36, margin: '0 auto 16px', borderWidth: 3 }} />
-                  <div style={{ fontSize: 15, fontWeight: 500, color: 'var(--cream)' }}>
+                  <div className="spinner" style={{ width: 36, height: 36, margin: '0 auto 16px', borderWidth: 3, borderColor: 'var(--emerald)', borderTopColor: 'transparent' }} />
+                  <div style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-primary)' }}>
                     Transmitting payload to {data.platform} Seller API…
                   </div>
-                  <div style={{ fontSize: 12, color: 'var(--cream-dim)', marginTop: 6 }}>
+                  <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 6 }}>
                     Validating geographical indication and taxonomy compliance
                   </div>
                 </div>
@@ -572,23 +583,24 @@ Platform Recommendation: ${data.platform}`
               {publishStatus === 'success' && (
                 <div style={{ textAlign: 'center', padding: '24px 0' }}>
                   <div style={{ fontSize: 44, marginBottom: 12 }}>🎉</div>
-                  <div style={{ fontSize: 18, fontWeight: 600, color: '#3A7C5A', fontFamily: 'var(--font-display)', marginBottom: 6 }}>
+                  <div style={{ fontSize: 18, fontWeight: 600, color: 'var(--emerald)', fontFamily: 'var(--font-display)', marginBottom: 6 }}>
                     Listing Published Successfully!
                   </div>
-                  <p style={{ fontSize: 13, color: 'var(--cream-dim)', marginBottom: 20 }}>
-                    Your listing is now registered in the Karigar seller queue under Draft ASIN <code style={{ color: 'var(--orange)' }}>B0DKA{Date.now().toString().slice(-5)}</code>.
+                  <p style={{ fontSize: 13, color: 'var(--text-muted)', marginBottom: 20 }}>
+                    Your listing is now registered in the Karigar seller queue under Draft ASIN <code style={{ color: 'var(--emerald)', fontWeight: 600 }}>B0DKA{Date.now().toString().slice(-5)}</code>.
                   </p>
                   <button
                     type="button"
                     onClick={() => { setShowPublishModal(false); setPublishStatus('idle'); }}
                     style={{
-                      background: 'rgba(230, 218, 201, 0.1)',
-                      border: '1px solid var(--border)',
-                      color: 'var(--cream)',
+                      background: 'var(--emerald-light)',
+                      border: '1px solid var(--emerald-border)',
+                      color: 'var(--emerald)',
                       padding: '10px 24px',
                       borderRadius: 100,
                       cursor: 'pointer',
                       fontSize: 13,
+                      fontWeight: 600,
                     }}
                   >
                     Done

@@ -32,32 +32,33 @@ export default function TimelineSection({
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              padding: '14px 18px',
-              background: 'rgba(12, 10, 9, 0.7)',
+              padding: '14px 20px',
+              background: '#FFFFFF',
               border: '1px solid var(--border)',
               borderRadius: 14,
               marginBottom: 28,
-              fontSize: 12,
+              fontSize: 12.5,
               flexWrap: 'wrap',
-              gap: 8,
+              gap: 10,
+              boxShadow: 'var(--shadow-sm)',
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ color: 'var(--orange)' }}>●</span>
-              <span style={{ color: 'var(--cream-soft)' }}>{t.pipelineInput}</span>
-              <span style={{ color: 'var(--cream-dim)' }}>(Craft story)</span>
+              <span style={{ color: 'var(--vermilion)', fontWeight: 700 }}>●</span>
+              <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{t.pipelineInput}</span>
+              <span style={{ color: 'var(--text-muted)' }}>(Craft story)</span>
             </div>
-            <span style={{ color: 'var(--cream-dim)' }}>→</span>
+            <span style={{ color: 'var(--text-muted)' }}>→</span>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ color: 'var(--coral)' }}>◇</span>
-              <span style={{ color: 'var(--cream-soft)' }}>{t.pipelineCraft}</span>
-              <span style={{ color: 'var(--cream-dim)' }}>(Taxonomy & 1,248 comps)</span>
+              <span style={{ color: 'var(--ochre)', fontWeight: 700 }}>◇</span>
+              <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{t.pipelineCraft}</span>
+              <span style={{ color: 'var(--text-muted)' }}>(Taxonomy & 1,248 comps)</span>
             </div>
-            <span style={{ color: 'var(--cream-dim)' }}>→</span>
+            <span style={{ color: 'var(--text-muted)' }}>→</span>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ color: '#3A7C5A' }}>✓</span>
-              <span style={{ color: 'var(--cream-soft)' }}>{t.pipelineReasoning}</span>
-              <span style={{ color: 'var(--cream-dim)' }}>(Price / Listing / Market)</span>
+              <span style={{ color: 'var(--emerald)', fontWeight: 700 }}>✓</span>
+              <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{t.pipelineReasoning}</span>
+              <span style={{ color: 'var(--text-muted)' }}>(Price / Listing / Market)</span>
             </div>
           </div>
 
@@ -74,11 +75,11 @@ export default function TimelineSection({
             <div>
               <div
                 style={{
-                  fontSize: 10,
-                  letterSpacing: '0.12em',
+                  fontSize: 11,
+                  letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: 'var(--orange)',
-                  fontWeight: 600,
+                  color: 'var(--emerald)',
+                  fontWeight: 700,
                   marginBottom: 6,
                 }}
               >
@@ -86,33 +87,31 @@ export default function TimelineSection({
               </div>
               <h3 className="timeline-title">{t.title}</h3>
               <p className="timeline-sub" style={{ margin: 0 }}>
-                {isLoading
-                  ? t.subtitleRunning
-                  : t.subtitleDone}
+                {isLoading ? t.subtitleRunning : t.subtitleDone}
               </p>
             </div>
 
             <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
               <div
                 style={{
-                  background: isLoading ? 'rgba(232, 131, 56, 0.1)' : 'rgba(58, 124, 90, 0.12)',
-                  border: `1px solid ${isLoading ? 'rgba(232, 131, 56, 0.25)' : 'rgba(58, 124, 90, 0.3)'}`,
-                  color: isLoading ? 'var(--orange)' : '#3A7C5A',
-                  fontSize: 11,
-                  fontWeight: 500,
-                  padding: '6px 12px',
+                  background: isLoading ? 'var(--vermilion-light)' : 'var(--emerald-light)',
+                  border: `1px solid ${isLoading ? 'var(--vermilion-border)' : 'var(--emerald-border)'}`,
+                  color: isLoading ? 'var(--vermilion)' : 'var(--emerald)',
+                  fontSize: 12,
+                  fontWeight: 600,
+                  padding: '6px 14px',
                   borderRadius: 100,
                   display: 'flex',
                   alignItems: 'center',
-                  gap: 6,
+                  gap: 8,
                 }}
               >
                 <span
                   style={{
-                    width: 6,
-                    height: 6,
+                    width: 7,
+                    height: 7,
                     borderRadius: '50%',
-                    background: isLoading ? 'var(--orange)' : '#3A7C5A',
+                    background: isLoading ? 'var(--vermilion)' : 'var(--emerald)',
                     animation: isLoading ? 'blink 1.5s infinite' : 'none',
                   }}
                 />
@@ -122,13 +121,14 @@ export default function TimelineSection({
               {!isLoading && completedStages.length > 0 && (
                 <div
                   style={{
-                    background: 'rgba(230, 218, 201, 0.05)',
+                    background: '#FFFFFF',
                     border: '1px solid var(--border)',
-                    color: 'var(--cream-soft)',
-                    fontSize: 11,
+                    color: 'var(--text-secondary)',
+                    fontSize: 12,
                     fontWeight: 500,
-                    padding: '6px 12px',
+                    padding: '6px 14px',
                     borderRadius: 100,
+                    boxShadow: 'var(--shadow-sm)',
                   }}
                 >
                   {t.confidence}
@@ -140,16 +140,17 @@ export default function TimelineSection({
           {error && (
             <div
               style={{
-                background: 'rgba(232, 131, 56, 0.08)',
-                border: '1px solid rgba(232, 131, 56, 0.25)',
+                background: 'var(--vermilion-light)',
+                border: '1px solid var(--vermilion-border)',
                 borderRadius: 12,
                 padding: '12px 18px',
-                color: 'var(--orange)',
-                fontSize: 12,
+                color: 'var(--vermilion)',
+                fontSize: 12.5,
                 marginBottom: 20,
                 display: 'flex',
                 alignItems: 'center',
                 gap: 10,
+                fontWeight: 500,
               }}
             >
               <span style={{ fontSize: 16 }}>ℹ</span>
@@ -166,10 +167,11 @@ export default function TimelineSection({
                     style={{
                       fontFamily: 'monospace',
                       fontSize: 11,
-                      color: state === 'active' ? 'var(--orange)' : 'var(--cream-dim)',
+                      color: state === 'active' ? 'var(--vermilion)' : 'var(--text-muted)',
                       width: 44,
                       flexShrink: 0,
                       paddingTop: 6,
+                      fontWeight: 600,
                     }}
                   >
                     {timestamps[i]}

@@ -7,7 +7,7 @@ const AGENT_ROSTER = [
     name: 'Voice Companion',
     role: 'Multilingual voice agent',
     status: '12 languages · Agent active',
-    color: '#E88338',
+    color: '#046A38',
     chat: [
       {
         sender: 'artisan',
@@ -31,7 +31,7 @@ const AGENT_ROSTER = [
     name: 'Craft Intelligence',
     role: 'Vision + language agent',
     status: 'Taxonomy v4.2 · Active',
-    color: '#D96B43',
+    color: '#E34222',
     chat: [
       {
         sender: 'artisan',
@@ -75,7 +75,7 @@ const AGENT_ROSTER = [
     name: 'Listing Concierge',
     role: 'Commerce writing agent',
     status: 'SEO engine · Active',
-    color: '#7A3E48',
+    color: '#0E6655',
     chat: [
       {
         sender: 'artisan',
@@ -147,7 +147,7 @@ export default function AgentNetworkSection() {
                 className={`agent-item ${selectedAgent === agent.id ? 'active' : ''}`}
                 onClick={() => setSelectedAgent(agent.id)}
                 style={{
-                  borderLeft: selectedAgent === agent.id ? `2px solid ${agent.color}` : '2px solid transparent',
+                  borderLeft: selectedAgent === agent.id ? `3px solid ${agent.color}` : '3px solid transparent',
                 }}
               >
                 <div
@@ -155,8 +155,8 @@ export default function AgentNetworkSection() {
                   style={{
                     background: `${agent.color}15`,
                     color: agent.color,
-                    border: `1px solid ${agent.color}30`,
-                    fontWeight: 600,
+                    border: `1px solid ${agent.color}35`,
+                    fontWeight: 700,
                   }}
                 >
                   {agent.icon}
@@ -167,7 +167,7 @@ export default function AgentNetworkSection() {
                 </div>
                 <div
                   className="agent-status-dot"
-                  style={{ background: '#3A7C5A' }}
+                  style={{ background: 'var(--emerald)' }}
                   title="Agent Active"
                 />
               </div>
@@ -175,7 +175,7 @@ export default function AgentNetworkSection() {
           </div>
 
           {/* Right chat / console pane */}
-          <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', height: '100%', background: '#FFFFFF' }}>
             {/* Console Header */}
             <div
               style={{
@@ -184,43 +184,44 @@ export default function AgentNetworkSection() {
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                background: 'rgba(12, 10, 9, 0.4)',
+                background: 'var(--bg-card-subtle)',
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <span
                   style={{
-                    width: 28,
-                    height: 28,
+                    width: 30,
+                    height: 30,
                     borderRadius: 8,
-                    background: `${currentAgent.color}20`,
+                    background: `${currentAgent.color}18`,
                     color: currentAgent.color,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     fontSize: 14,
-                    fontWeight: 600,
+                    fontWeight: 700,
+                    border: `1px solid ${currentAgent.color}30`,
                   }}
                 >
                   {currentAgent.icon}
                 </span>
                 <div>
-                  <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--cream)' }}>
+                  <div style={{ fontSize: 13.5, fontWeight: 600, color: 'var(--text-primary)' }}>
                     {currentAgent.name}
                   </div>
-                  <div style={{ fontSize: 11, color: 'var(--cream-dim)' }}>
+                  <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>
                     {currentAgent.status}
                   </div>
                 </div>
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, color: '#3A7C5A' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11.5, color: 'var(--emerald)', fontWeight: 600 }}>
                 <span
                   style={{
                     width: 7,
                     height: 7,
                     borderRadius: '50%',
-                    background: '#3A7C5A',
+                    background: 'var(--emerald)',
                     display: 'inline-block',
                     animation: 'blink 2s infinite',
                   }}
@@ -230,7 +231,7 @@ export default function AgentNetworkSection() {
             </div>
 
             {/* Message stream */}
-            <div className="agent-chat" style={{ flex: 1 }}>
+            <div className="agent-chat" style={{ flex: 1, background: '#FFFFFF' }}>
               {currentChat.map((msg, idx) => (
                 <div
                   key={idx}
@@ -239,8 +240,9 @@ export default function AgentNetworkSection() {
                   <div
                     className="chat-avatar"
                     style={{
-                      background: msg.sender === 'artisan' ? 'rgba(232, 131, 56, 0.15)' : `${currentAgent.color}20`,
-                      color: msg.sender === 'artisan' ? 'var(--orange)' : currentAgent.color,
+                      background: msg.sender === 'artisan' ? 'var(--emerald-light)' : `${currentAgent.color}15`,
+                      color: msg.sender === 'artisan' ? 'var(--emerald)' : currentAgent.color,
+                      border: `1px solid ${msg.sender === 'artisan' ? 'var(--emerald-border)' : `${currentAgent.color}30`}`,
                     }}
                   >
                     {msg.sender === 'artisan' ? '👤' : currentAgent.icon}
@@ -249,9 +251,10 @@ export default function AgentNetworkSection() {
                     <div
                       style={{
                         fontSize: 11,
-                        color: 'var(--cream-dim)',
+                        color: 'var(--text-muted)',
                         marginBottom: 4,
                         textAlign: msg.sender === 'artisan' ? 'right' : 'left',
+                        fontWeight: 500,
                       }}
                     >
                       {msg.name} · {msg.time}
@@ -266,7 +269,7 @@ export default function AgentNetworkSection() {
                               <div
                                 key={i}
                                 style={{
-                                  width: 2,
+                                  width: 2.5,
                                   height: h * 0.6,
                                   background: currentAgent.color,
                                   borderRadius: 1,
@@ -274,7 +277,7 @@ export default function AgentNetworkSection() {
                               />
                             ))}
                           </div>
-                          <span style={{ fontSize: 10, color: 'var(--cream-dim)', marginLeft: 4 }}>Voice note</span>
+                          <span style={{ fontSize: 10, color: 'var(--text-muted)', marginLeft: 4 }}>Voice note</span>
                         </div>
                       )}
                     </div>
@@ -292,7 +295,7 @@ export default function AgentNetworkSection() {
                 display: 'flex',
                 gap: 10,
                 alignItems: 'center',
-                background: 'rgba(12, 10, 9, 0.5)',
+                background: 'var(--bg-card-subtle)',
               }}
             >
               <button
@@ -300,10 +303,11 @@ export default function AgentNetworkSection() {
                 style={{
                   background: 'transparent',
                   border: 'none',
-                  color: 'var(--cream-dim)',
-                  fontSize: 16,
+                  color: 'var(--emerald)',
+                  fontSize: 18,
                   cursor: 'pointer',
                   padding: '4px',
+                  fontWeight: 700,
                 }}
                 title="Voice input"
               >
@@ -316,13 +320,14 @@ export default function AgentNetworkSection() {
                 onChange={e => setInputText(e.target.value)}
                 style={{
                   flex: 1,
-                  background: 'rgba(230, 218, 201, 0.04)',
+                  background: '#FFFFFF',
                   border: '1px solid var(--border)',
                   borderRadius: 100,
                   padding: '10px 18px',
-                  color: 'var(--cream)',
+                  color: 'var(--text-primary)',
                   fontSize: 13,
                   outline: 'none',
+                  boxShadow: '0 1px 2px rgba(40, 30, 20, 0.04)',
                 }}
               />
               <button
@@ -331,14 +336,15 @@ export default function AgentNetworkSection() {
                   width: 36,
                   height: 36,
                   borderRadius: '50%',
-                  background: 'var(--grad-brand)',
+                  background: 'var(--grad-emerald)',
                   border: 'none',
-                  color: 'var(--cream)',
+                  color: '#FFFFFF',
                   fontSize: 14,
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  boxShadow: '0 2px 6px rgba(4, 106, 56, 0.3)',
                 }}
               >
                 ↑

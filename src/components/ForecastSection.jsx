@@ -54,7 +54,7 @@ export default function ForecastSection() {
           <div className="forecast-header">
             <div>
               <div className="forecast-title">60-Day Pre-Festive Demand Velocity</div>
-              <div style={{ fontSize: 11, color: 'var(--cream-dim)', marginTop: 2 }}>
+              <div style={{ fontSize: 11.5, color: 'var(--text-muted)', marginTop: 2 }}>
                 Category: Hand-block printed dining & table linen
               </div>
             </div>
@@ -73,15 +73,15 @@ export default function ForecastSection() {
               >
                 <defs>
                   <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#E88338" stopOpacity="0.35" />
-                    <stop offset="80%" stopColor="#D96B43" stopOpacity="0.05" />
-                    <stop offset="100%" stopColor="#7A3E48" stopOpacity="0.0" />
+                    <stop offset="0%" stopColor="#046A38" stopOpacity="0.25" />
+                    <stop offset="60%" stopColor="#E34222" stopOpacity="0.10" />
+                    <stop offset="100%" stopColor="#FAF6EE" stopOpacity="0.0" />
                   </linearGradient>
 
                   <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stopColor="#D96B43" />
-                    <stop offset="60%" stopColor="#E88338" />
-                    <stop offset="100%" stopColor="#F5EBE1" />
+                    <stop offset="0%" stopColor="#046A38" />
+                    <stop offset="65%" stopColor="#046A38" />
+                    <stop offset="100%" stopColor="#E34222" />
                   </linearGradient>
                 </defs>
 
@@ -95,25 +95,16 @@ export default function ForecastSection() {
                       y1={y}
                       x2={width - paddingX}
                       y2={y}
-                      stroke="rgba(230, 218, 201, 0.05)"
+                      stroke="rgba(40, 30, 20, 0.06)"
                       strokeDasharray="4 4"
                     />
                   )
                 })}
 
-                {/* Baseline */}
-                <line
-                  x1={paddingX}
-                  y1={height - paddingY}
-                  x2={width - paddingX}
-                  y2={height - paddingY}
-                  stroke="var(--border)"
-                />
-
-                {/* Filled area */}
+                {/* Area fill */}
                 <path d={areaD} fill="url(#areaGradient)" />
 
-                {/* Stroke curve */}
+                {/* Main line curve */}
                 <path
                   d={pathD}
                   fill="none"
@@ -122,98 +113,93 @@ export default function ForecastSection() {
                   strokeLinecap="round"
                 />
 
-                {/* Interactive Points */}
-                {points.map((p, i) => {
-                  const isKey = i === 0 || i === 4 || i === 6
-                  const isHovered = hoveredIndex === i
-                  return (
-                    <g
-                      key={i}
+                {/* Points */}
+                {points.map((p, i) => (
+                  <g key={i}>
+                    <circle
+                      cx={p.x}
+                      cy={p.y}
+                      r={i === 6 || hoveredIndex === i ? 6 : 4}
+                      fill="#FFFFFF"
+                      stroke={i === 6 ? '#E34222' : '#046A38'}
+                      strokeWidth={i === 6 ? 3 : 2}
+                      style={{ cursor: 'pointer', transition: 'all 0.2s' }}
                       onMouseEnter={() => setHoveredIndex(i)}
                       onMouseLeave={() => setHoveredIndex(null)}
-                      style={{ cursor: 'pointer' }}
-                    >
+                    />
+                    {i === 6 && (
                       <circle
                         cx={p.x}
                         cy={p.y}
-                        r={isHovered ? 7 : isKey ? 5 : 3.5}
-                        fill={isKey ? '#E88338' : 'var(--cream)'}
-                        stroke="var(--paper)"
-                        strokeWidth="2"
-                        filter={isKey ? 'drop-shadow(0 0 6px rgba(232, 131, 56, 0.8))' : 'none'}
+                        r="12"
+                        fill="none"
+                        stroke="#E34222"
+                        strokeWidth="1.5"
+                        strokeOpacity="0.4"
+                        style={{ animation: 'pulse-ring 2s infinite' }}
                       />
-
-                      {/* Timeline date label below */}
-                      <text
-                        x={p.x}
-                        y={height - 8}
-                        textAnchor="middle"
-                        fill={isKey ? 'var(--orange)' : 'var(--cream-dim)'}
-                        fontSize="11"
-                        fontWeight={isKey ? '600' : '400'}
-                      >
-                        {p.label}
-                      </text>
-
-                      {/* Tooltip on hover */}
-                      {isHovered && (
-                        <g>
-                          <rect
-                            x={p.x - 45}
-                            y={p.y - 36}
-                            width="90"
-                            height="24"
-                            rx="6"
-                            fill="#1E1813"
-                            stroke="rgba(232, 131, 56, 0.4)"
-                          />
-                          <text
-                            x={p.x}
-                            y={p.y - 20}
-                            textAnchor="middle"
-                            fill="var(--cream)"
-                            fontSize="11"
-                            fontWeight="500"
-                          >
-                            Index: {p.value}/100
-                          </text>
-                        </g>
-                      )}
-                    </g>
-                  )
-                })}
+                    )}
+                  </g>
+                ))}
               </svg>
+
+              {/* Data labels strip */}
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  padding: '12px 20px 0',
+                  borderTop: '1px solid var(--border)',
+                  fontSize: 11,
+                  color: 'var(--text-muted)',
+                }}
+              >
+                {points.map((p, i) => (
+                  <div key={i} style={{ textAlign: 'center', flex: 1 }}>
+                    <div style={{ fontWeight: i === 6 ? 700 : 500, color: i === 6 ? 'var(--vermilion)' : 'var(--text-primary)' }}>
+                      {p.label}
+                    </div>
+                    <div style={{ fontSize: 10, color: 'var(--text-muted)', marginTop: 2 }}>
+                      {p.date} · {p.value}%
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div
               style={{
+                marginTop: 20,
+                padding: '14px 18px',
+                background: 'var(--bg-card-subtle)',
+                border: '1px solid var(--border)',
+                borderRadius: 12,
                 display: 'flex',
                 justifyContent: 'space-between',
-                paddingTop: 16,
-                borderTop: '1px solid var(--border)',
-                fontSize: 11,
-                color: 'var(--cream-dim)',
+                alignItems: 'center',
                 flexWrap: 'wrap',
                 gap: 12,
               }}
             >
-              <div style={{ display: 'flex', gap: 20 }}>
-                <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                  <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#E88338' }} />
-                  <span>Key Milestones: Today · Oct 12 (Gift Rush) · Diwali Peak</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <span style={{ fontSize: 18, color: 'var(--vermilion)' }}>✦</span>
+                <span style={{ fontSize: 12.5, color: 'var(--text-primary)', fontWeight: 500 }}>
+                  Optimal cataloging window: <strong>August 25 – September 15</strong> ensures algorithmic indexing on Amazon Karigar before gifting peak.
                 </span>
               </div>
-              <span style={{ color: '#3A7C5A', fontWeight: 500 }}>
-                ● 4.2x search spike during weeks 40–50
-              </span>
-            </div>
-          </div>
-
-          <div className="forecast-insight">
-            <div className="forecast-insight-icon">🎯</div>
-            <div className="forecast-insight-text">
-              <strong>Publish by early October:</strong> Searches for luxury handmade table linen peak 3–4 weeks prior to Diwali.
-              Listing a table runner paired with a 4-napkin set unlocks corporate gifting budgets, generating an estimated <strong>+32% higher order value</strong> compared to standalone sales.
+              <div
+                style={{
+                  background: 'var(--vermilion-light)',
+                  border: '1px solid var(--vermilion-border)',
+                  color: 'var(--vermilion)',
+                  fontSize: 11.5,
+                  padding: '4px 12px',
+                  borderRadius: 100,
+                  fontWeight: 600,
+                }}
+              >
+                High Velocity Window
+              </div>
             </div>
           </div>
         </div>

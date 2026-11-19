@@ -23,7 +23,7 @@ function Card01({ data, lang }) {
 
       <div className="product-row">
         <span className="product-row-label">Heritage Craft</span>
-        <span className="product-row-val" style={{ color: 'var(--cream)' }}>
+        <span className="product-row-val" style={{ color: 'var(--text-primary)', fontWeight: 600 }}>
           {tags[0] || 'Handcrafted Textile'}
         </span>
       </div>
@@ -37,7 +37,7 @@ function Card01({ data, lang }) {
       </div>
       <div className="product-row">
         <span className="product-row-label">Maker Cost Baseline</span>
-        <span className="product-row-val" style={{ color: 'var(--orange)', fontWeight: 600 }}>
+        <span className="product-row-val" style={{ color: 'var(--vermilion)', fontWeight: 700 }}>
           {data.local_cost}
         </span>
       </div>
@@ -66,7 +66,7 @@ function Card02({ data, lang }) {
     ]
   }
 
-  const CITY_ACCENTS = ['#E88338', '#D96B43', '#C28E3A']
+  const CITY_ACCENTS = ['var(--emerald)', 'var(--vermilion)', 'var(--ochre)']
 
   return (
     <div className="result-card">
@@ -74,12 +74,12 @@ function Card02({ data, lang }) {
         <div className="card-num">CARD 02 · PRICE</div>
         <span
           style={{
-            background: 'rgba(58, 124, 90, 0.1)',
-            border: '1px solid rgba(58, 124, 90, 0.25)',
-            color: '#3A7C5A',
+            background: 'var(--emerald-light)',
+            border: '1px solid var(--emerald-border)',
+            color: 'var(--emerald)',
             fontSize: 11,
-            fontWeight: 500,
-            padding: '3px 8px',
+            fontWeight: 600,
+            padding: '3px 9px',
             borderRadius: 100,
           }}
         >
@@ -87,29 +87,29 @@ function Card02({ data, lang }) {
         </span>
       </div>
       <div className="card-title">Smart Pricing</div>
-      <p style={{ fontSize: 12, color: 'var(--cream-dim)', marginBottom: 16 }}>
+      <p style={{ fontSize: 12, color: 'var(--text-muted)', marginBottom: 16 }}>
         Benchmarked across 1,248 active listings for artisan textile goods.
       </p>
 
       {rows.slice(0, 3).map((row, i) => (
         <div key={i} className="price-row">
           <div className="price-city">
-            <span className="city-dot" style={{ background: CITY_ACCENTS[i] || '#E88338' }} />
+            <span className="city-dot" style={{ background: CITY_ACCENTS[i] || 'var(--emerald)' }} />
             <div>
               <div className="price-label">{row.city}</div>
               <div className="price-sub">Market capacity index {94 - i * 6}/100</div>
             </div>
           </div>
           <div style={{ textAlign: 'right' }}>
-            <div className="price-amount" style={{ color: CITY_ACCENTS[i] || '#E88338' }}>
+            <div className="price-amount" style={{ color: CITY_ACCENTS[i] || 'var(--emerald)' }}>
               {row.price}
             </div>
             {row.margin && (
               <div
                 style={{
-                  fontSize: 10,
-                  color: '#3A7C5A',
-                  fontWeight: 500,
+                  fontSize: 10.5,
+                  color: 'var(--emerald)',
+                  fontWeight: 600,
                   marginTop: 2,
                 }}
               >
@@ -150,12 +150,13 @@ function Card03({ data, productImage }) {
               position: 'absolute',
               bottom: 8,
               left: 8,
-              background: 'rgba(12, 10, 9, 0.75)',
-              padding: '3px 8px',
+              background: 'rgba(255, 255, 255, 0.95)',
+              padding: '4px 10px',
               borderRadius: 6,
               fontSize: 10,
-              color: 'var(--orange)',
-              fontWeight: 500,
+              color: 'var(--emerald)',
+              fontWeight: 600,
+              boxShadow: 'var(--shadow-sm)',
             }}
           >
             ✦ Verified Craft Photo Attached
@@ -234,9 +235,9 @@ function Card05({ data }) {
             style={{
               height: `${h}%`,
               background: i >= 9
-                ? 'linear-gradient(180deg, #E88338, #7A3E48)'
-                : 'rgba(230, 218, 201, 0.08)',
-              boxShadow: i >= 9 ? '0 0 10px rgba(232, 131, 56, 0.4)' : 'none',
+                ? 'linear-gradient(180deg, var(--vermilion), var(--emerald))'
+                : 'rgba(4, 106, 56, 0.1)',
+              boxShadow: i >= 9 ? '0 0 10px rgba(227, 66, 34, 0.35)' : 'none',
             }}
           />
         ))}
@@ -249,8 +250,8 @@ function Card05({ data }) {
               flex: 1,
               textAlign: 'center',
               fontSize: 10,
-              color: i >= 9 ? 'var(--orange)' : 'var(--cream-dim)',
-              fontWeight: i >= 9 ? 600 : 400,
+              color: i >= 9 ? 'var(--vermilion)' : 'var(--text-muted)',
+              fontWeight: i >= 9 ? 700 : 400,
             }}
           >
             {m}
@@ -286,13 +287,13 @@ export default function ResultsSection({ result, fallbackInput, productImage, la
             <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
               <span
                 style={{
-                  background: 'rgba(232, 131, 56, 0.1)',
-                  border: '1px solid rgba(232, 131, 56, 0.25)',
-                  color: 'var(--orange)',
-                  padding: '4px 12px',
+                  background: 'var(--emerald-light)',
+                  border: '1px solid var(--emerald-border)',
+                  color: 'var(--emerald)',
+                  padding: '5px 14px',
                   borderRadius: 100,
-                  fontSize: 11,
-                  fontWeight: 500,
+                  fontSize: 11.5,
+                  fontWeight: 600,
                 }}
               >
                 {s}

@@ -5,7 +5,7 @@ const PHASES = [
     title: 'Foundation',
     agent: 'Listing Concierge',
     tag: '06 listings',
-    color: '#E88338',
+    color: '#046A38',
     tasks: [
       { text: 'Publish 06 core Ajrakh collection listings', done: true },
       { text: 'Embed regional craft taxonomy keywords', done: true },
@@ -19,7 +19,7 @@ const PHASES = [
     title: 'Validate',
     agent: 'Pricing Strategist',
     tag: '02 markets',
-    color: '#D96B43',
+    color: '#E34222',
     tasks: [
       { text: 'Test Mumbai & Bengaluru pricing sensitivity', done: false },
       { text: 'Benchmark click-through on Karigar vs Etsy', done: false },
@@ -47,7 +47,7 @@ const PHASES = [
     title: 'Scale',
     agent: 'Commerce Agent',
     tag: '₹2.8L volume',
-    color: '#7A3E48',
+    color: '#0E6655',
     tasks: [
       { text: 'Activate multi-channel inventory sync', done: false },
       { text: 'Turn on automated voice order confirmations', done: false },
@@ -72,93 +72,114 @@ export default function RoadmapSection() {
 
           <div
             style={{
-              background: 'rgba(232, 131, 56, 0.08)',
-              border: '1px solid rgba(232, 131, 56, 0.25)',
+              background: '#FFFFFF',
+              border: '1px solid var(--border)',
               borderRadius: 20,
               padding: '20px 28px',
               textAlign: 'right',
-              boxShadow: '0 8px 24px rgba(0,0,0,0.3)',
+              boxShadow: 'var(--shadow-md)',
             }}
           >
-            <div style={{ fontSize: 11, color: 'var(--cream-dim)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 4 }}>
+            <div style={{ fontSize: 11, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 4, fontWeight: 600 }}>
               90-Day Target Volume
             </div>
             <div
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: 34,
-                fontWeight: 500,
-                color: 'var(--orange)',
+                fontSize: 36,
+                fontWeight: 600,
+                color: 'var(--emerald)',
                 lineHeight: 1,
               }}
             >
               ₹2.8L
             </div>
-            <div style={{ fontSize: 11, color: '#3A7C5A', marginTop: 4, fontWeight: 500 }}>
+            <div style={{ fontSize: 11.5, color: 'var(--emerald)', marginTop: 4, fontWeight: 600 }}>
               ↗ Projected +48% net artisan margin
             </div>
           </div>
         </div>
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: 16,
-          }}
-          className="roadmap-grid-responsive"
-        >
-          {PHASES.map((phase) => (
-            <div
-              key={phase.num}
-              className="roadmap-phase"
-              style={{
-                borderTop: `2px solid ${phase.color}`,
-              }}
-            >
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                <span className="roadmap-phase-label">{phase.weeks}</span>
-                <span
-                  style={{
-                    background: `${phase.color}15`,
-                    color: phase.color,
-                    fontSize: 10,
-                    fontWeight: 600,
-                    padding: '2px 8px',
-                    borderRadius: 100,
-                    border: `1px solid ${phase.color}30`,
-                  }}
-                >
-                  {phase.tag}
-                </span>
-              </div>
-
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
+        <div className="roadmap-grid">
+          {PHASES.map((p) => (
+            <div className="roadmap-card" key={p.num}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
                 <span
                   style={{
                     fontFamily: 'var(--font-display)',
-                    fontSize: 12,
+                    fontSize: 22,
                     fontWeight: 600,
-                    color: phase.color,
+                    color: p.color,
                   }}
                 >
-                  Phase {phase.num}
+                  {p.num}
                 </span>
-                <span style={{ color: 'var(--border-strong)' }}>·</span>
-                <span style={{ fontSize: 11, color: 'var(--cream-dim)' }}>{phase.agent}</span>
+                <span
+                  style={{
+                    background: `${p.color}15`,
+                    color: p.color,
+                    border: `1px solid ${p.color}30`,
+                    fontSize: 11,
+                    fontWeight: 600,
+                    padding: '3px 8px',
+                    borderRadius: 100,
+                  }}
+                >
+                  {p.tag}
+                </span>
               </div>
 
-              <div className="roadmap-phase-title">{phase.title}</div>
+              <div style={{ fontSize: 11, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600 }}>
+                {p.weeks}
+              </div>
+              <div
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 18,
+                  fontWeight: 600,
+                  color: 'var(--text-primary)',
+                  margin: '4px 0 2px',
+                }}
+              >
+                {p.title}
+              </div>
+              <div style={{ fontSize: 11.5, color: p.color, fontWeight: 500, marginBottom: 18 }}>
+                Owner: {p.agent}
+              </div>
 
-              <div style={{ marginTop: 16 }}>
-                {phase.tasks.map((task, i) => (
-                  <div key={i} className="roadmap-task">
-                    <div className={`task-check ${task.done ? 'done' : 'todo'}`}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                {p.tasks.map((task, idx) => (
+                  <div
+                    key={idx}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: 8,
+                      fontSize: 12,
+                      lineHeight: 1.5,
+                      color: task.done ? 'var(--text-primary)' : 'var(--text-muted)',
+                    }}
+                  >
+                    <span
+                      style={{
+                        width: 16,
+                        height: 16,
+                        borderRadius: '50%',
+                        background: task.done ? 'var(--emerald-light)' : 'var(--bg-card-subtle)',
+                        border: `1px solid ${task.done ? 'var(--emerald)' : 'var(--border-strong)'}`,
+                        color: task.done ? 'var(--emerald)' : 'transparent',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: 10,
+                        fontWeight: 700,
+                        flexShrink: 0,
+                        marginTop: 1,
+                      }}
+                    >
                       {task.done ? '✓' : ''}
-                    </div>
-                    <span style={{ color: task.done ? 'var(--cream-soft)' : 'var(--cream-dim)' }}>
-                      {task.text}
                     </span>
+                    <span>{task.text}</span>
                   </div>
                 ))}
               </div>

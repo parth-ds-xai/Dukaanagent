@@ -72,37 +72,37 @@ export default function MarketObservatory() {
         <div className="market-obs">
           {/* KPI Card 1: Revenue Potential */}
           <div className="obs-metric-card">
-            <div style={{ height: 2, background: 'linear-gradient(90deg, #E88338, transparent)', marginBottom: 20 }} />
+            <div style={{ height: 3, background: 'linear-gradient(90deg, var(--emerald), transparent)', borderRadius: 2, marginBottom: 20 }} />
             <div className="obs-metric-label">Revenue Potential</div>
-            <div className="obs-metric-val" style={{ color: 'var(--orange)' }}>₹2.8L</div>
+            <div className="obs-metric-val" style={{ color: 'var(--emerald)' }}>₹2.8L</div>
             <div className="obs-metric-trend">
-              <span style={{ color: '#3A7C5A', fontWeight: 600 }}>↗ 18.4%</span>
-              <span style={{ color: 'var(--cream-dim)' }}>estimated quarterly volume</span>
+              <span style={{ color: 'var(--emerald)', fontWeight: 600 }}>↗ 18.4%</span>
+              <span style={{ color: 'var(--text-muted)' }}>estimated quarterly volume</span>
             </div>
           </div>
 
           {/* KPI Card 2: Marketplace Fit (Circular indicator) */}
           <div className="obs-metric-card">
-            <div style={{ height: 2, background: 'linear-gradient(90deg, #C28E3A, transparent)', marginBottom: 20 }} />
+            <div style={{ height: 3, background: 'linear-gradient(90deg, var(--ochre), transparent)', borderRadius: 2, marginBottom: 20 }} />
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
               <div>
                 <div className="obs-metric-label">Primary Marketplace Fit</div>
-                <div className="obs-metric-val" style={{ color: 'var(--cream)' }}>Karigar</div>
+                <div className="obs-metric-val" style={{ color: 'var(--text-primary)' }}>Karigar</div>
                 <div className="obs-metric-trend">
-                  <span style={{ color: '#3A7C5A' }}>✓ Certified GI Category</span>
+                  <span style={{ color: 'var(--emerald)', fontWeight: 600 }}>✓ Certified GI Category</span>
                 </div>
               </div>
 
               {/* Circular Gauge 92% */}
               <div style={{ position: 'relative', width: 68, height: 68 }}>
                 <svg width="68" height="68" viewBox="0 0 68 68">
-                  <circle cx="34" cy="34" r="28" fill="none" stroke="rgba(230, 218, 201, 0.08)" strokeWidth="6" />
+                  <circle cx="34" cy="34" r="28" fill="none" stroke="rgba(4, 106, 56, 0.1)" strokeWidth="6" />
                   <circle
                     cx="34"
                     cy="34"
                     r="28"
                     fill="none"
-                    stroke="#E88338"
+                    stroke="var(--emerald)"
                     strokeWidth="6"
                     strokeDasharray={2 * Math.PI * 28}
                     strokeDashoffset={2 * Math.PI * 28 * (1 - 0.92)}
@@ -119,8 +119,8 @@ export default function MarketObservatory() {
                     justifyContent: 'center',
                     fontFamily: 'var(--font-display)',
                     fontSize: 14,
-                    fontWeight: 600,
-                    color: 'var(--cream)',
+                    fontWeight: 700,
+                    color: 'var(--text-primary)',
                   }}
                 >
                   92%
@@ -131,10 +131,10 @@ export default function MarketObservatory() {
 
           {/* KPI Card 3: City Demand Index */}
           <div className="obs-metric-card" style={{ gridColumn: 'span 2' }}>
-            <div style={{ height: 2, background: 'linear-gradient(90deg, #D96B43, transparent)', marginBottom: 20 }} />
+            <div style={{ height: 3, background: 'linear-gradient(90deg, var(--vermilion), transparent)', borderRadius: 2, marginBottom: 20 }} />
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
               <div className="obs-metric-label" style={{ margin: 0 }}>City Demand Index (Textile & Home Decor)</div>
-              <span style={{ fontSize: 11, color: 'var(--cream-dim)' }}>Indexed across 4 metros</span>
+              <span style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 500 }}>Indexed across 4 metros</span>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 14 }}>
@@ -142,28 +142,28 @@ export default function MarketObservatory() {
                 <div
                   key={i}
                   style={{
-                    background: 'rgba(0,0,0,0.25)',
+                    background: 'var(--bg-card-subtle)',
                     border: '1px solid var(--border)',
                     borderRadius: 12,
                     padding: '14px',
                   }}
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
-                    <span style={{ fontSize: 13, fontWeight: 500, color: 'var(--cream)' }}>{c.name}</span>
-                    <span style={{ fontSize: 11, color: '#3A7C5A', fontWeight: 600 }}>{c.growth}</span>
+                    <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-primary)' }}>{c.name}</span>
+                    <span style={{ fontSize: 11, color: 'var(--emerald)', fontWeight: 600 }}>{c.growth}</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 8 }}>
-                    <span style={{ fontFamily: 'var(--font-display)', fontSize: 24, fontWeight: 500, color: 'var(--orange)' }}>
+                    <span style={{ fontFamily: 'var(--font-display)', fontSize: 24, fontWeight: 600, color: 'var(--vermilion)' }}>
                       {c.score}
                     </span>
-                    <span style={{ fontSize: 10, color: 'var(--cream-dim)' }}>/100</span>
+                    <span style={{ fontSize: 10, color: 'var(--text-muted)' }}>/100</span>
                   </div>
-                  <div style={{ height: 4, background: 'rgba(230, 218, 201, 0.08)', borderRadius: 2, overflow: 'hidden' }}>
+                  <div style={{ height: 4, background: 'rgba(4, 106, 56, 0.1)', borderRadius: 2, overflow: 'hidden' }}>
                     <div
                       style={{
                         height: '100%',
                         width: `${c.score}%`,
-                        background: 'linear-gradient(90deg, #E88338, #C28E3A)',
+                        background: 'linear-gradient(90deg, var(--vermilion), var(--emerald))',
                         borderRadius: 2,
                       }}
                     />
@@ -187,19 +187,20 @@ export default function MarketObservatory() {
             >
               <div>
                 <div className="obs-table-title">Comparable Market Dataset</div>
-                <div style={{ fontSize: 11, color: 'var(--cream-dim)', marginTop: 2 }}>
+                <div style={{ fontSize: 11.5, color: 'var(--text-muted)', marginTop: 2 }}>
                   Filtered for Ajrakh · Table linen · Handmade pure cotton
                 </div>
               </div>
 
               <div
                 style={{
-                  background: 'rgba(230, 218, 201, 0.05)',
-                  border: '1px solid var(--border)',
-                  padding: '4px 12px',
+                  background: 'var(--emerald-light)',
+                  border: '1px solid var(--emerald-border)',
+                  padding: '5px 14px',
                   borderRadius: 100,
-                  fontSize: 11,
-                  color: 'var(--cream-soft)',
+                  fontSize: 11.5,
+                  color: 'var(--emerald)',
+                  fontWeight: 600,
                 }}
               >
                 ● Live sync (every 6h)
@@ -222,35 +223,37 @@ export default function MarketObservatory() {
                 <tbody>
                   {COMPARABLES.map((row, i) => (
                     <tr key={i}>
-                      <td style={{ fontWeight: 400, color: 'var(--cream)' }}>{row.product}</td>
+                      <td style={{ fontWeight: 500, color: 'var(--text-primary)' }}>{row.product}</td>
                       <td>
                         <span
                           style={{
-                            background: 'rgba(230, 218, 201, 0.05)',
+                            background: 'var(--bg-card-subtle)',
                             border: '1px solid var(--border)',
                             padding: '3px 8px',
                             borderRadius: 6,
                             fontSize: 11,
+                            color: 'var(--text-secondary)',
+                            fontWeight: 500,
                           }}
                         >
                           {row.marketplace}
                         </span>
                       </td>
                       <td>{row.city}</td>
-                      <td style={{ color: 'var(--orange)', fontWeight: 500 }}>{row.price}</td>
-                      <td style={{ color: 'var(--cream-soft)' }}>{row.demand}</td>
+                      <td style={{ color: 'var(--emerald)', fontWeight: 700 }}>{row.price}</td>
+                      <td style={{ color: 'var(--text-secondary)' }}>{row.demand}</td>
                       <td>
-                        <span style={{ color: '#3A7C5A', fontWeight: 500 }}>{row.margin}</span>
+                        <span style={{ color: 'var(--emerald)', fontWeight: 600 }}>{row.margin}</span>
                       </td>
                       <td>
                         <span
                           style={{
-                            background: 'rgba(58, 124, 90, 0.1)',
-                            color: '#3A7C5A',
-                            padding: '2px 8px',
+                            background: 'var(--emerald-light)',
+                            color: 'var(--emerald)',
+                            padding: '3px 9px',
                             borderRadius: 100,
                             fontSize: 11,
-                            fontWeight: 500,
+                            fontWeight: 600,
                           }}
                         >
                           {row.fit}
@@ -269,8 +272,8 @@ export default function MarketObservatory() {
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                fontSize: 11,
-                color: 'var(--cream-dim)',
+                fontSize: 11.5,
+                color: 'var(--text-muted)',
               }}
             >
               <span>Showing 5 of 1,248 signals</span>
@@ -279,12 +282,13 @@ export default function MarketObservatory() {
                   type="button"
                   onClick={() => setPage(p => Math.max(1, p - 1))}
                   style={{
-                    background: 'none',
+                    background: '#FFFFFF',
                     border: '1px solid var(--border)',
-                    color: 'var(--cream-soft)',
-                    padding: '2px 8px',
-                    borderRadius: 4,
+                    color: 'var(--text-secondary)',
+                    padding: '3px 10px',
+                    borderRadius: 6,
                     cursor: 'pointer',
+                    fontWeight: 600,
                   }}
                 >
                   ←
@@ -294,12 +298,13 @@ export default function MarketObservatory() {
                   type="button"
                   onClick={() => setPage(p => p + 1)}
                   style={{
-                    background: 'none',
+                    background: '#FFFFFF',
                     border: '1px solid var(--border)',
-                    color: 'var(--cream-soft)',
-                    padding: '2px 8px',
-                    borderRadius: 4,
+                    color: 'var(--text-secondary)',
+                    padding: '3px 10px',
+                    borderRadius: 6,
                     cursor: 'pointer',
+                    fontWeight: 600,
                   }}
                 >
                   →

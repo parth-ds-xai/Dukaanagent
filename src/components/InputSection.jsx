@@ -180,7 +180,7 @@ export default function InputSection({
             </div>
 
             <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-              <span style={{ fontSize: 11, color: 'var(--cream-dim)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+              <span style={{ fontSize: 11, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600 }}>
                 {t.quickLoad}
               </span>
               <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
@@ -190,22 +190,26 @@ export default function InputSection({
                     type="button"
                     onClick={() => applySample(s)}
                     style={{
-                      background: 'rgba(230, 218, 201, 0.05)',
+                      background: '#FFFFFF',
                       border: '1px solid var(--border)',
-                      color: 'var(--cream-soft)',
+                      color: 'var(--text-secondary)',
                       fontSize: 11,
-                      padding: '4px 10px',
+                      padding: '5px 12px',
                       borderRadius: 100,
                       cursor: 'pointer',
-                      transition: 'all 0.2s',
+                      fontWeight: 500,
+                      transition: 'all 0.2s ease',
+                      boxShadow: '0 1px 2px rgba(40, 30, 20, 0.04)',
                     }}
                     onMouseEnter={e => {
-                      e.currentTarget.style.borderColor = 'var(--orange)'
-                      e.currentTarget.style.color = 'var(--orange)'
+                      e.currentTarget.style.borderColor = 'var(--emerald)'
+                      e.currentTarget.style.color = 'var(--emerald)'
+                      e.currentTarget.style.background = 'var(--emerald-light)'
                     }}
                     onMouseLeave={e => {
                       e.currentTarget.style.borderColor = 'var(--border)'
-                      e.currentTarget.style.color = 'var(--cream-soft)'
+                      e.currentTarget.style.color = 'var(--text-secondary)'
+                      e.currentTarget.style.background = '#FFFFFF'
                     }}
                   >
                     {s.label.split(' ')[0]}
@@ -256,23 +260,29 @@ export default function InputSection({
                     onDragOver={e => e.preventDefault()}
                     onDrop={handleDrop}
                     style={{
-                      border: '1px dashed var(--border-strong)',
-                      borderRadius: 12,
-                      padding: '20px',
+                      border: '1.5px dashed var(--border-strong)',
+                      borderRadius: 14,
+                      padding: '24px 20px',
                       textAlign: 'center',
-                      background: 'rgba(0,0,0,0.2)',
+                      background: 'var(--bg-card-subtle)',
                       cursor: 'pointer',
-                      transition: 'all 0.2s',
+                      transition: 'all 0.2s ease',
                     }}
-                    onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--orange)'}
-                    onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border-strong)'}
+                    onMouseEnter={e => {
+                      e.currentTarget.style.borderColor = 'var(--emerald)'
+                      e.currentTarget.style.background = '#FFFFFF'
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.borderColor = 'var(--border-strong)'
+                      e.currentTarget.style.background = 'var(--bg-card-subtle)'
+                    }}
                   >
-                    <div style={{ fontSize: 24, marginBottom: 6 }}>📷</div>
-                    <div style={{ fontSize: 13, color: 'var(--cream-soft)', fontWeight: 500 }}>
+                    <div style={{ fontSize: 26, marginBottom: 8, color: 'var(--vermilion)' }}>📷</div>
+                    <div style={{ fontSize: 13.5, color: 'var(--text-primary)', fontWeight: 600 }}>
                       {t.dropPhoto}
                     </div>
-                    <div style={{ fontSize: 11, color: 'var(--cream-dim)', marginTop: 4 }}>
-                      PNG, JPG or WEBP up to 10MB
+                    <div style={{ fontSize: 11.5, color: 'var(--text-muted)', marginTop: 4 }}>
+                      PNG, JPG or WEBP up to 10MB · Boosts ONDC buyer trust
                     </div>
                   </div>
                 ) : (
@@ -281,10 +291,11 @@ export default function InputSection({
                       display: 'flex',
                       alignItems: 'center',
                       gap: 16,
-                      background: 'rgba(0,0,0,0.3)',
+                      background: '#FFFFFF',
                       border: '1px solid var(--border)',
-                      borderRadius: 12,
-                      padding: 12,
+                      borderRadius: 14,
+                      padding: 14,
+                      boxShadow: 'var(--shadow-sm)',
                     }}
                   >
                     <img
@@ -293,16 +304,16 @@ export default function InputSection({
                       style={{
                         width: 72,
                         height: 72,
-                        borderRadius: 8,
+                        borderRadius: 10,
                         objectFit: 'cover',
                         border: '1px solid var(--border-strong)',
                       }}
                     />
                     <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: 13, color: 'var(--cream)', fontWeight: 500 }}>
+                      <div style={{ fontSize: 13.5, color: 'var(--text-primary)', fontWeight: 600 }}>
                         Craft photo attached
                       </div>
-                      <div style={{ fontSize: 11, color: '#3A7C5A', marginTop: 2 }}>
+                      <div style={{ fontSize: 11.5, color: 'var(--emerald)', marginTop: 2, fontWeight: 500 }}>
                         ✓ Ready to render into catalog listing
                       </div>
                     </div>
@@ -310,13 +321,15 @@ export default function InputSection({
                       type="button"
                       onClick={() => onImageChange(null)}
                       style={{
-                        background: 'rgba(230, 218, 201, 0.08)',
+                        background: 'var(--bg-card-subtle)',
                         border: '1px solid var(--border)',
-                        color: 'var(--cream-dim)',
-                        padding: '6px 12px',
-                        borderRadius: 8,
+                        color: 'var(--vermilion)',
+                        padding: '6px 14px',
+                        borderRadius: 100,
                         fontSize: 12,
+                        fontWeight: 500,
                         cursor: 'pointer',
+                        transition: 'all 0.2s ease',
                       }}
                     >
                       {t.removePhoto}
@@ -328,9 +341,9 @@ export default function InputSection({
           ) : (
             <div
               style={{
-                background: 'rgba(12, 10, 9, 0.6)',
-                border: '1px dashed var(--border-strong)',
-                borderRadius: 16,
+                background: 'var(--bg-card-subtle)',
+                border: '1.5px dashed var(--border-strong)',
+                borderRadius: 18,
                 padding: '36px 20px',
                 textAlign: 'center',
                 marginBottom: 24,
@@ -339,49 +352,52 @@ export default function InputSection({
               <div
                 onClick={handleToggleRecord}
                 style={{
-                  width: 88,
-                  height: 88,
+                  width: 90,
+                  height: 90,
                   borderRadius: '50%',
                   background: isRecording
-                    ? 'linear-gradient(135deg, #E88338, #7A3E48)'
-                    : 'rgba(232, 131, 56, 0.1)',
-                  border: '1px solid rgba(232, 131, 56, 0.3)',
+                    ? 'linear-gradient(135deg, #E34222, #046A38)'
+                    : 'var(--emerald-light)',
+                  border: `2px solid ${isRecording ? 'var(--vermilion)' : 'var(--emerald-border)'}`,
+                  color: isRecording ? '#FFFFFF' : 'var(--emerald)',
                   margin: '0 auto 20px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontSize: 34,
                   cursor: 'pointer',
-                  boxShadow: isRecording ? '0 0 32px rgba(232, 131, 56, 0.5)' : 'none',
-                  transition: 'all 0.3s',
+                  boxShadow: isRecording
+                    ? '0 0 32px rgba(227, 66, 34, 0.45)'
+                    : '0 4px 16px rgba(4, 106, 56, 0.12)',
+                  transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
                   animation: isRecording ? 'pulse-ring 1.5s infinite' : 'none',
                 }}
               >
                 {isRecording ? '⏹' : '🎙'}
               </div>
 
-              <div style={{ fontSize: 15, fontWeight: 500, color: 'var(--cream)', marginBottom: 6 }}>
+              <div style={{ fontSize: 16, fontWeight: 600, color: 'var(--text-primary)', marginBottom: 6 }}>
                 {isRecording ? `${t.micListening} (00:0${recordTimer})` : t.micPrompt}
               </div>
-              <div style={{ fontSize: 12, color: 'var(--cream-dim)', marginBottom: 20 }}>
+              <div style={{ fontSize: 12.5, color: 'var(--text-muted)', marginBottom: 20 }}>
                 {speechSupported
                   ? 'Web Speech API active · Live speech-to-text in Hindi, Gujarati & English'
                   : 'Mic audio capture enabled · Auto-transcription to text'}
               </div>
 
               {/* 24-bar audio frequency spectrum visualizer */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 3, height: 36 }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 3.5, height: 38 }}>
                 {Array.from({ length: 24 }).map((_, i) => {
                   const barHeight = isRecording
-                    ? Math.sin((i + recordTimer * 2) * 0.7) * 12 + 18
+                    ? Math.sin((i + recordTimer * 2) * 0.7) * 14 + 18
                     : 4
                   return (
                     <div
                       key={i}
                       style={{
-                        width: 3,
+                        width: 3.5,
                         height: barHeight,
-                        background: isRecording ? 'var(--orange)' : 'rgba(230, 218, 201, 0.2)',
+                        background: isRecording ? 'var(--vermilion)' : 'rgba(4, 106, 56, 0.25)',
                         borderRadius: 3,
                         transition: 'height 0.15s ease',
                       }}
@@ -391,7 +407,21 @@ export default function InputSection({
               </div>
 
               {liveTranscript && (
-                <div style={{ marginTop: 16, fontSize: 13, color: 'var(--orange)', fontStyle: 'italic', background: 'rgba(0,0,0,0.3)', padding: '8px 16px', borderRadius: 8 }}>
+                <div
+                  style={{
+                    marginTop: 18,
+                    fontSize: 13,
+                    color: 'var(--emerald)',
+                    fontStyle: 'italic',
+                    background: '#FFFFFF',
+                    border: '1px solid var(--emerald-border)',
+                    padding: '10px 18px',
+                    borderRadius: 10,
+                    maxWidth: 520,
+                    margin: '18px auto 0',
+                    boxShadow: 'var(--shadow-sm)',
+                  }}
+                >
                   "{liveTranscript}"
                 </div>
               )}
